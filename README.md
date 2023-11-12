@@ -6,355 +6,547 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Darbininkai
+namespace Workers
 {
-    class Darbas
-    {
-        private string įmonė;
-        private int metai;
-        private int mėn;
-        private int diena;
-        private string pavard;
-        private string pavad;
-        private double įkainis;
-        private int vnt;       
+    class Work
 
-        public Darbas(string įmonė, int metai, int mėn, int diena, string pavard, string pavad, double įkainis, int vnt)
-        {
-            this.įmonė = įmonė;
-            this.metai = metai;
-            this.mėn = mėn;
-            this.diena = diena;
-            this.pavard = pavard;
-            this.pavad = pavad;
-            this.įkainis = įkainis;
-            this.vnt = vnt;
-        }
+{
 
-        public override string ToString()
-        {
-            string eilute;
-            eilute = string.Format("|  {0, -11} |  {1, -6:d} | {2, -5:d} | {3, -3:d} | {4, 3} | {5, 7}  | {6, 2:f2} | {7, 5:d} |",
-            įmonė, metai, mėn, diena, pavard, pavad, įkainis, vnt);
-            return eilute;
-        }
+private string company;
 
-        public override bool Equals(object objektas)
-        {           
-            Darbas darbas = objektas as Darbas;
-            return darbas.pavard == pavard;            
-        }
+private int year;
 
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+private int month;
 
-        public string ImtiPavard()
-        {
-            return pavard;
-        }
+private int day;
 
-        public int ImtiMetus()
-        {
-            return metai;
-        }
+private String lastname;
 
-        public int ImtiMenesius()
-        {
-            return mėn;
-        }
+private String name;
 
-        public int ImtiDienas()
-        {
-            return diena;
-        }
+private double rate;
 
-        public int ImtiDetaliųSk()
-        {
-            return vnt;
-        }
+private int unit;
 
-        public double Uždarbis()
-        {
-            return įkainis * vnt;
-        }
+public Job(string company, int year, int month, int day, string lastname, string title, double rate, int unit)
 
-    }
+{
 
-    class DarboMasyvas
-    {
-        const int Cn = 50;
-        private Darbas[] Darbai; //Darbininkų atlikto darbo informacija
-        private int n; //Darbų rezultatų kiekis
+this.company = company;
 
-        public DarboMasyvas()
-        {
-            Darbai = new Darbas[Cn];
-            n = 0;
-        }
+this.year = year;
 
-        public Darbas ImtiDuomenis(int i)
-        {
-            return Darbai[i];
-        }
+this.month = month;
 
-        public int ImtiSkaičių()
-        {
-            return n;
-        }
+this.day = day;
 
-        public void DėtiDarbą(Darbas darbai)
-        {
-            Darbai[n++] = darbai;
-        }
-        public Darbas RastiDaugiausiaiUždirbantįDarbuotoją()
-        {
-            Darbas daugiausiaiUždirbantis = Darbai[0];             
-            foreach (Darbas darbuotojas in Darbai)
-            {           
-                if (darbuotojas.Uždarbis() > daugiausiaiUždirbantis.Uždarbis())
-                {                    
-                    daugiausiaiUždirbantis = darbuotojas;
-                }
-            }
-            return daugiausiaiUždirbantis;
-        }
+this.lastname = lastname;
 
+this.pavad = pavad;
 
-    }
+this.rate = rate;
 
-    class MaxDarbas
-    {
-        private int n;
-        private Darbas[] D;
-        const int Cn = 50;
-        private string pavarde;
-        private int dienos;
-        private int vnt;
-        private double uždarbis;
+this.unit = unit;
 
-        public MaxDarbas()
-        {
-            D = new Darbas[Cn];
-            n = 0;
-            pavarde = "";
-            dienos = 0;
-            vnt = 0;
-            uždarbis = 0;
-        }
+}
 
-        public Darbas Imti(int i)
-        {
-            return D[i];
-        }
+public override string ToString()
 
-        public int Imti()
-        {
-            return n;
-        }
+{
 
-        public string ImtiPavard()
-        {
-            return pavarde;
-        }
+string string;
 
-        public int ImtiDienas()
-        {
-            return dienos;
-        }
+string = string.Format("| {0, -11} | {1, -6:d} | {2, -5:d} | {3, -3:d} | {4, 3} | {5 , 7} | {6, 2:f2} | {7, 5:d} |",
 
-        public int ImtiDetaliuKiek()
-        {
-            return vnt;
-        }
+company, year, month, day, surname, name, rate, unit);
 
-        public double ImtiUzdarbi()
-        {
-            return uždarbis;
-        }
-        
-        public void Deti(string pavarde, int dienos, int vnt, double uždarbis, Darbas d)
-        {
-            D[n++] = d;
-            this.pavarde = pavarde;
-            this.dienos = dienos;
-            this.vnt = vnt;
-            this.uždarbis = uždarbis;
-        }
-        
-    }
+return line;
+
+}
+
+public override bool Equals(object object)
+
+{
+
+Job job = object as Job;
+
+return work.name == name;
+
+}
+
+public override int GetHashCode()
+
+{
+
+return base.GetHashCode();
+
+}
+
+public string GetName()
+
+{
+
+return surname;
+
+}
+
+public int GetYear()
+
+{
+
+return year;
+
+}
+
+public int GetMonths()
+
+{
+
+return month;
+
+}
+
+public int GetDay()
+
+{
+
+return day;
+
+}
+
+public int GetDetails()
+
+{
+
+return unit;
+
+}
+
+public double Earnings()
+
+{
+
+return rate * unit;
+
+}
+
+}
+
+class JobArray
+
+{
+
+const int Cn = 50;
+
+private Job[] Jobs; //Information of work done by workers
+
+private int n; //Number of job results
+
+public WorkArray()
+
+{
+
+Jobs = new Job[Cn];
+
+n = 0;
+
+}
+
+public Job GetData(int i)
+
+{
+
+return Jobs[i];
+
+}
+
+public int GetNumber()
+
+{
+
+return n;
+
+}
+
+public void PutJob(Job jobs)
+
+{
+
+Jobs[n++] = jobs;
+
+}
+
+public Job FindHighestEarningEmployee()
+
+{
+
+Job topEarning = Jobs[0];
+
+foreach (Job employee in Jobs)
+
+{
+
+if (employee.Earnings() > topEarner.Earnings())
+
+{
+
+topEarner = employee;
+
+}
+
+}
+
+return highestEarner;
+
+}
+
+}
+
+class MaxWork
+
+{
+
+private int n;
+
+private Job[] D;
+
+const int Cn = 50;
+
+private String lastname;
+
+private int days;
+
+private int unit;
+
+private double earnings;
+
+public MaxWork()
+
+{
+
+D = new Job[Cn];
+
+n = 0;
+
+lastname = "";
+
+days = 0;
+
+units = 0;
+
+earnings = 0;
+
+}
+
+public Job Take(int i)
+
+{
+
+return D[i];
+
+}
+
+public int Get()
+
+{
+
+return n;
+
+}
+
+public string GetName()
+
+{
+
+return last name;
+
+}
+
+public int GetDay()
+
+{
+
+return days;
+
+}
+
+public int GetDetailQuantity()
+
+{
+
+return unit;
+
+}
+
+public double GetWork()
+
+{
+
+return earnings;
+
+}
+
+public void Deti(string lastname, int days, int units, double earnings, Job d)
+
+{
+
+D[n++] = d;
+
+this.lastname = lastname;
+
+this.days = days;
+
+this.unit = unit;
+
+this.earnings = earnings;
+
+}
+
+}
 
     internal class Program
-    {
-        const string CFd = "..\\..\\Darbas.txt";
-        const string CFr = "..\\..\\DarboRezultatai.txt";        
-        static void Main(string[] args)
-        {
-            DarboMasyvas darbas = new DarboMasyvas();
-            MaxDarbas maxDarbas = new MaxDarbas();
-            
-            if (File.Exists(CFr))
-                File.Delete(CFr);
-            Skaityti(CFd, darbas);
-            Spausdinti(CFr, darbas);
-            MaxUždarbis(darbas, maxDarbas); 
-            
-        }
 
-        static void Skaityti(string fv, DarboMasyvas darbai)
-        {
-            int i = 0;
-            using (StreamReader reader = new StreamReader(fv))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    string[] parts = line.Split(';');
-                    string įmonė = parts[0];
-                    int metai = int.Parse(parts[1]);
-                    int mėn = int.Parse(parts[2]);
-                    int diena = int.Parse(parts[3]);
-                    string pavard = parts[4];
-                    string pavad = parts[5];
-                    double įkainis = double.Parse(parts[6]);
-                    int vnt = int.Parse(parts[7]);
-                    Darbas D = new Darbas(įmonė, metai, mėn, diena, pavard, pavad, įkainis, vnt);
-                    darbai.DėtiDarbą(D);
-                    i++;
-                }
-            }
-        }
+{
 
-        static void Spausdinti(string fv, DarboMasyvas darbai)
-        {
-            string viršus = "                     Informacija apie darbininkų darbo rezultatus       \r\n"
-                           + "----------------------------------------------------------------------------------------------------\r\n"
-                           + "|   Įmonės     |  Metai  |  Mėnesis | Diena |  Darbininko  |   Detalės    |  Įkainis  |  Pagamintų  |\r\n"
-                           + "| pavadinimas  |         |          |       |   pavardė    |  pavadinimas |           |   detalių   |\r\n"
-                           + "|              |         |          |       |              |              |           |   skaičius  |\r\n"
-                           + "----------------------------------------------------------------------------------------------------";
-            using (var fr = File.AppendText(fv))
-            {
-                fr.WriteLine(viršus);
-                for (int i = 0; i < darbai.ImtiSkaičių(); i++)
-                {
-                    fr.WriteLine(darbai.ImtiDuomenis(i).ToString());
-                }
-                fr.WriteLine("----------------------------------------------------------------------------------------------------");
-            }
-        }
+const string CFd = "..\\..\\Work.txt";
 
-        /*static void PapildytiDarb(DarboMasyvas darbai)
-        {
-            MaxDarbas maxDarbas = new MaxDarbas();
+const string CFr = "..\\..\\WorkResults.txt";
 
-            for (int i = 0; i < darbai.ImtiSkaičių(); i++)
-            {
-                Darbas darbas = darbai.ImtiDuomenis(i);
-                bool found = false;
+static void Main(string[] args)
 
-                for (int j = 0; j < maxDarbas.Imti(); j++)
-                {
-                    Darbas maxDarbininkas = maxDarbas.Imti(j);
-                    
-                    if (maxDarbininkas.Equals(darbas))
-                    {
-                        found = true;
-                        maxDarbininkas.Uždarbis() += darbas.Uždarbis();
-                        maxDarbininkas.ImtiDetaliųSk() += darbas.ImtiDetaliųSk();
-                        break;
-                    }
-                }
+{
 
-                if (!found)
-                {
-                    maxDarbas.Deti(darbas);
-                }
-            }
-        }*/
+JobArray job = new JobArray();
+
+MaxWork maxWork = new MaxWork();
+
+if (File.Exists(CFr))
+
+File.Delete(CFr);
+
+Read(CFd, job);
+
+Print(CFr, job);
+
+MaxEarnings(work, maxWork);
+
+}
+
+static void Read(string fv, WorkArray works)
+
+{
+
+int i = 0;
+
+using (StreamReader reader = new StreamReader(fv))
+
+{
+
+string line;
+
+while ((line = reader.ReadLine()) != null)
+
+{
+
+string[] parts = line.Split(';');
+
+string company = parts[0];
+
+int year = int.Parse(parts[1]);
+
+int month = int.Parse(parts[2]);
+
+int day = int.Parse(parts[3]);
+
+string lastname = parts[4];
+
+string name = parts[5];
+
+double rate = double.Parse(parts[6]);
+
+int parts = int.Parse(parts[7]);
+
+Job D = new Job(company, year, month, day, last name, first name, rate, unit);
+
+jobs.PutWork(D);
+
+i++;
+
+}
+
+}
+
+}
 
 
-        /*static Darbas MaxUždarbis(DarboMasyvas darbai)
-        {
-            Darbas max = darbai.ImtiDuomenis(0);
-            for (int i = 1; i < darbai.ImtiSkaičių(); i++)
-            {
-                Darbas darb = darbai.ImtiDuomenis(i);
-                if (darb.Uždarbis() > max.Uždarbis())
-                    max = darb;
-            }
-            return max;
-        }*/
+
+static void Print(string fv, JobArray jobs)
+
+{
+
+string top = " Information about the work results of workers \r\n"
+
++ "------------------------------------------------ ---------------------------------------------------- --\r\n"
+
++ "| Company | Year | Month | Day | Worker | Details | Rate | Produced |\r\n"
+
++ "| name | | | | last name | name | | details |\r\n"
+
++ "| | | | | | | | number |\r\n"
+
++ "------------------------------------------------ ---------------------------------------------------- --";
+
+using (var fr = File.AppendText(fv))
+
+{
+
+fr.WriteLine(top);
+
+for (int i = 0; i < jobs.GetNumber(); i++)
+
+{
+
+fr.WriteLine(jobs.GetData(i).ToString());
+
+}
+
+fr.WriteLine("------------------------------------------------ ---------------------------------------------------- -----");
+
+}
+
+}
 
 
-        static int Dienos(DarboMasyvas darbai)
-        {
-            int dienos = 0;            
-            for (int i = 0; i < darbai.ImtiSkaičių(); i++)
-            {
-                for (int j = 0; j < darbai.ImtiSkaičių() && j != i; j++)
-                {
-                    if (darbai.ImtiDuomenis(i).Equals(darbai.ImtiDuomenis(j)))
-                    {
-                        dienos = dienos + ((darbai.ImtiDuomenis(i).ImtiMetus() - darbai.ImtiDuomenis(j).ImtiMetus()) * 365 +
-                            (darbai.ImtiDuomenis(i).ImtiMenesius() - darbai.ImtiDuomenis(j).ImtiMenesius()) * 30 +
-                            (darbai.ImtiDuomenis(i).ImtiDienas() - darbai.ImtiDuomenis(j).ImtiDienas()));
-                    }
-                }
-            }
-            return dienos;
-        }
 
-        static int Vnt(DarboMasyvas darbai)
-        {
-            int vnt = 0;
-            for (int i = 0; i < darbai.ImtiSkaičių(); i++)
-            {
-                for (int j = 0; j < darbai.ImtiSkaičių() && j != i; j++)
-                {
-                    if (darbai.ImtiDuomenis(i).Equals(darbai.ImtiDuomenis(j)))
-                    {
-                        vnt = vnt + (darbai.ImtiDuomenis(j).ImtiDetaliųSk() + darbai.ImtiDuomenis(i).ImtiDetaliųSk());
-                    }
-                }
-            }
-            return vnt;
-        }
+static int Days(JobArray jobs)
 
-        static double Uždarbis(DarboMasyvas darbai)
-        {
-            double uždarbis = 0;
-            for (int i = 0; i < darbai.ImtiSkaičių(); i++)
-            {
-                for (int j = 0; j < darbai.ImtiSkaičių() && j != i; j++)
-                {
-                    if (darbai.ImtiDuomenis(i).Equals(darbai.ImtiDuomenis(j)))
-                    {
-                        uždarbis = uždarbis + (darbai.ImtiDuomenis(j).Uždarbis() + darbai.ImtiDuomenis(i).Uždarbis());
-                    }
-                }
-            }
-            return uždarbis;
-        }
+{
 
-        static Darbas MaxUždarbis(DarboMasyvas darbai, MaxDarbas maxDarbas)
-        {
-            Darbas max = darbai.ImtiDuomenis(0);            
-            for (int i = 1; i < darbai.ImtiSkaičių(); i++)
-            {
-                for (int j = 0; j < darbai.ImtiSkaičių(); j++)
-                {
-                    if (darbai.ImtiDuomenis(i).Equals(darbai.ImtiDuomenis(j)))
-                    {
-                        maxDarbas.Deti(darbai.ImtiDuomenis(i).ImtiPavard(), Dienos(darbai), Vnt(darbai), Uždarbis(darbai), darbai.ImtiDuomenis(i));                        
-                    }
-                }
-                Console.WriteLine("{0} {1} {2} {3}", maxDarbas.ImtiPavard(), maxDarbas.ImtiDienas(), maxDarbas.ImtiDetaliuKiek(), maxDarbas.ImtiUzdarbi());
-                                
-            }
-            return max;
-        }
+int days = 0;
+
+for (int i = 0; i < jobs.GetNumber(); i++)
+
+{
+
+for (int j = 0; j < jobs.GetNumbers() && j != i; j++)
+
+{
+
+if (jobs.GetData(i).Equals(jobs.GetData(j)))
+
+{
+
+days = days + (((jobs.GetData(i).GetYear() - jobs.GetData(j).GetYear()) * 365 +
+
+(jobs.GetData(i).GetMonth() - jobs.GetData(j).GetMonth()) * 30 +
+
+(jobs.GetData(i).GetDay() - jobs.GetData(j).GetDay()));
+
+}
+
+}
+
+}
+
+return days;
+
+}
+
+static int Units(WorkArray works)
+
+{
+
+int units = 0;
+
+for (int i = 0; i < jobs.GetNumber(); i++)
+
+{
+
+for (int j = 0; j < jobs.GetNumbers() && j != i; j++)
+
+{
+
+if (jobs.GetData(i).Equals(jobs.GetData(j)))
+
+{
+
+vnt = vnt + (jobs.GetData(j).GetDetails() + jobs.GetData(i).GetDetails());
+
+}
+
+}
+
+}
+
+return unit;
+
+}
+
+
+
+static double Earnings(WorkArray jobs)
+
+{
+
+double earnings = 0;
+
+for (int i = 0; i < jobs.GetNumber(); i++)
+
+{
+
+for (int j = 0; j < jobs.GetNumbers() && j != i; j++)
+
+{
+
+if (jobs.GetData(i).Equals(jobs.GetData(j)))
+
+{
+
+earnings = earnings + (jobs.GetData(j).Earnings() + jobs.GetData(i).Earnings());
+
+}
+
+}
+
+}
+
+return earnings;
+
+}
+
+static Work MaxEarnings(WorkArray jobs, MaxWork maxWork)
+
+{
+
+Job max = jobs.GetData(0);
+
+for (int i = 1; i < jobs.GetNumber(); i++)
+
+{
+
+for (int j = 0; j < jobs.GetNumber(); j++)
+
+{
+
+if (jobs.GetData(i).Equals(jobs.GetData(j)))
+
+{
+
+maxJobs.Deti(jobs.GetData(i).GetName(), Days(jobs), Units(jobs), Earnings(jobs), jobs.GetData(i));
+
+}
+
+}
+
+Console.WriteLine("{0} {1} {2} {3}", maxWork.GetName(), maxWork.GetDay(), maxWork.GetDetailQuantity(), maxWork.GetWork());
+
+}
+
+return max;
+
+}
+
+}
 
     }
 }
